@@ -3,6 +3,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from database import Base
 import uuid
+from datetime import datetime
 
 class User(Base):
     __tablename__ = "users"
@@ -44,3 +45,11 @@ class PortfolioPosition(Base):
     stock_id = Column(UUID(as_uuid=True), ForeignKey("stocks.id"))
     amount = Column(Integer)
     average_price = Column(Float)
+
+class Currency(Base):
+    __tablename__ = "currencies"
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = Column(String)
+    symbol = Column(String, unique=True, index=True)
+    exchange_rate = Column(Float)
+    last_updated = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

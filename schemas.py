@@ -45,6 +45,25 @@ class Transaction(TransactionCreate):
     class Config:
         orm_mode = True
 
+class TransactionHistory(BaseModel):
+    id: UUID
+    stock_name: str
+    stock_symbol: str
+    stock_last_price: float
+    amount: int
+    price: float
+    type: str
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
+
+class TransactionCreate(BaseModel):
+    stock_id: UUID
+    amount: int
+    price: float
+    type: str
+
 class Portfolio(BaseModel):
     id: UUID
     created_at: datetime
