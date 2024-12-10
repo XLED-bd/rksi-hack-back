@@ -79,6 +79,17 @@ class PortfolioPosition(BaseModel):
     class Config:
         orm_mode = True
 
+class PortfolioPositionResponse(BaseModel):
+    portfolio_id: UUID
+    stock_name: str
+    stock_symbol: str
+    amount: int
+    current_price: float
+    average_purchase_price: float
+
+    class Config:
+        orm_mode = True
+
 
 class PortfolioValue(BaseModel):
     total_value: float
