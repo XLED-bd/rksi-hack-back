@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models import Portfolio, PortfolioPosition
 from schemas import Portfolio as PortfolioSchema, PortfolioPosition as PortfolioPositionSchema
-import uuid
 from uuid import UUID
+import uuid
 from datetime import datetime
 
 router = APIRouter()
@@ -18,7 +18,7 @@ def read_portfolios(db: Session = Depends(get_db)):
 def create_portfolio(db: Session = Depends(get_db)):
     portfolio = Portfolio(
         id=uuid.uuid4(),
-        user_id=uuid.uuid4(),  # Assuming user is authenticated
+        user_id=uuid.uuid4(), 
         created_at=datetime.utcnow()
     )
     db.add(portfolio)

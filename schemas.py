@@ -25,6 +25,13 @@ class Stock(BaseModel):
     class Config:
         orm_mode = True
 
+
+class StockCreate(BaseModel):
+    symbol: str
+    name: str
+    currency: str
+    last_price: float
+
 class TransactionCreate(BaseModel):
     stock_id: UUID
     amount: int
@@ -52,3 +59,7 @@ class PortfolioPosition(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class PortfolioValue(BaseModel):
+    total_value: float
