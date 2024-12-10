@@ -12,8 +12,3 @@ app.include_router(transactions.router)
 @app.get("/")
 def read_root():
     return {"message": "hello"}
-
-
-from database import Base, engine
-
-Base.metadata.create_all(bind=engine)
