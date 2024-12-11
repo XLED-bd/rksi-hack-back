@@ -93,3 +93,38 @@ class PortfolioPositionResponse(BaseModel):
 
 class PortfolioValue(BaseModel):
     total_value: float
+
+
+class PortfolioPositionCreate(BaseModel):
+    portfolio_id: UUID
+    stock_id: UUID
+    amount: int
+    average_price: float
+
+class PortfolioPositionSchema(BaseModel):
+    id: UUID
+    portfolio_id: UUID
+    stock_id: UUID
+    amount: int
+    average_price: float
+
+    class Config:
+        orm_mode = True
+
+
+class TransactionCreate(BaseModel):
+    stock_id: UUID
+    amount: int
+    price: float
+    type: str  # BUY или SELL
+
+class TransactionSchema(BaseModel):
+    id: UUID
+    stock_id: UUID
+    amount: int
+    price: float
+    type: str
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
